@@ -2,50 +2,53 @@ export default function Contact() {
   return (
     <div>
       <div>
-        <div className="container" data-aos="zoom-out">
-          <div className="row" id="contact">
-            <div className="col-md col-lg py-3">
-              <div className="text-center">
-                <h2 className="text-secondary display-4">Contact us</h2>
-                <hr className="my-1" />
+        <div className="container">
+          <div className="row py-5" id="contact">
+            <div className="col-md col-lg py-3" data-aos="zoom-out">
+              <div
+                className="text-center"
+                style={{ display: "grid", placeItems: "center" }}
+              >
+                <h2 className="text-secondary display-4">Reach Out to Us</h2>
+                <hr className="my-1 text-primary" style={{ width: "30%" }} />
                 <p className="lead mt-0">
                   {/* reach to us if you have any queries. */}
                 </p>
               </div>
               <form>
-                <div className="form-group mb-3">
-                  {/* <label className="float-left">Enter name</label> */}
+                <div className="input-group mb-3">
+                  <span class="input-group-text">Enter Name</span>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter Full name"
                   />
                 </div>
-                <div className="form-group mb-3">
-                  {/* <label className="float-left">Enter mobile</label> */}
+                <div className="input-group mb-3">
+                  <span class="input-group-text">Enter Mobile</span>
                   <input
                     type="number"
                     className="form-control"
                     placeholder="Enter Mobile"
                   />
                 </div>
-                <div className="form-group mb-3">
-                  {/* <label className="float-left">Enter Email</label> */}
+                <div className="input-group mb-3">
+                  <span class="input-group-text">Enter Email</span>
                   <input
                     type="email"
                     className="form-control"
                     placeholder="Enter Email"
                   />
                 </div>
-                <div className="form-group mb-3">
-                  {/* <label className="float-left">Write your message here</label> */}
+                <div className="input-group mb-3">
+                  {/* <span class="input-group-text" >@</span> */}
                   <textarea
                     className="form-control"
                     rows="6"
                     placeholder="Explain how can we help you "
                   />
                 </div>
-                <div className="text-center mb-3">
+                <div className="text-center mb-3 d-grid ">
                   <button type="submit" className="btn btn-outline-primary">
                     Submit
                   </button>

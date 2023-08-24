@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <div>
-      <div className="sticky-top">
+      <div>
         <nav
-          className="navbar navbar-expand-md bg-dark border-bottom"
+          className="navbar navbar-expand-md bg-dark border-bottom sticky-top"
           data-bs-theme="dark"
         >
           <div className="container">
-            <a className="navbar-brand d-md-none" href="#">
+            <a className="navbar-brand me-4" href="#">
               KALYAN KN
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -19,7 +21,7 @@ export default function Navbar() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
             {/* <button
               className="navbar-toggler"
@@ -38,14 +40,17 @@ export default function Navbar() {
               // tabIndex="-1"
               // id="#offcanvas"
               // aria-labelledby="#offcanvasLabel"
-              class="collapse navbar-collapse"
+              className="collapse navbar-collapse ms-5"
               id="navbarSupportedContent"
             >
-              <div className="offcanvas-body">
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
                 <ul className="navbar-nav flex-grow-1 justify-content-between">
                   <li className="nav-item">
-                    <a className="nav-link" href="#about">
-                      <i class="bi bi-person-bounding-box me-2"></i>
+                    <a className="nav-link" href="/#about">
+                      <i className="bi bi-person-bounding-box me-2"></i>
                       <span>About</span>
                     </a>
                   </li>
@@ -55,38 +60,65 @@ export default function Navbar() {
                     </a>
                   </li> */}
                   <li className="nav-item">
-                    <a className="nav-link" href="#products">
-                      <i class="bi bi-box me-2"></i>
+                    <a className="nav-link" href="/#products">
+                      <i className="bi bi-box me-2"></i>
                       <span>Products</span>
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <i class="bi bi-sliders me-2"></i>
+                    <a className="nav-link" href="/#">
+                      <i className="bi bi-sliders me-2"></i>
                       <span> Features</span>
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <i class="bi bi-people-fill me-2"></i>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                    >
+                      <i className="bi bi-people-fill me-2"></i>
                       <span> Staff</span>
                     </a>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="dropdown-item" to="/login/management">
+                          Management
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/login/teacher">
+                          Teacher
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/login/parent">
+                          Parent
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/login/student">
+                          Student
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <i class="bi bi-wrench-adjustable-circle me-2"></i>
+                    <a className="nav-link" href="/#">
+                      <i className="bi bi-wrench-adjustable-circle me-2"></i>
                       <span>Support</span>
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <i class="bi bi-tag-fill me-2"></i>
+                    <a className="nav-link" href="/#">
+                      <i className="bi bi-tag-fill me-2"></i>
                       <span>Pricing</span>
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#contact">
-                      <i class="bi bi-person-lines-fill me-2"></i>
+                    <a className="nav-link" href="/#contact">
+                      <i className="bi bi-person-lines-fill me-2"></i>
                       <span> Contact</span>
                     </a>
                   </li>

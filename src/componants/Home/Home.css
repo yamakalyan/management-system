@@ -1,0 +1,25 @@
+#home {
+    width: 100%;
+}
+
+.Home-page {
+    height: 100vh;
+}
+
+.Home-page .home-bg-image {
+    background-image: url("https://t4.ftcdn.net/jpg/05/75/84/99/360_F_575849931_j0h5pEWF8XMd9OhGZhbODPL1ELaMQR75.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.home-bg-image .bg-transparent-color {
+    background: #00000081;
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+    display: grid;
+    place-items: center;
+}

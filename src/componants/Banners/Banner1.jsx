@@ -1,13 +1,13 @@
-export default function About() {
+const Banner1 = () => {
   return (
-    <div className="about">
+    <div className="Banner1">
       <div className="container-fluid">
         <div className=" bg-body-tertiary">
           <div className="">
             <div className="my-5" data-aos="zoom-in">
               <div className="py-5 text-center">
                 <div className="container py-5">
-                  <h1 className="text-body-emphasis">Full-width jumbotron</h1>
+                  <h1 className="text-body-emphasis">Banner 1 Description</h1>
                   <p className="col-lg-8 mx-auto lead">
                     This takes the basic jumbotron above and makes its
                     background edge-to-edge with a <code>.container</code>{" "}
@@ -22,4 +22,6 @@ export default function About() {
       </div>
     </div>
   );
-}
+};
+
+export default Banner1;

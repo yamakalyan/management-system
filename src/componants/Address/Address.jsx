@@ -17,8 +17,17 @@ const Address = () => {
                 <h3>Email : </h3>
                 <p>yamakalyan6@gmail.com</p>
               </div>
+              <iframe
+                src="https://yamakalyan3120.web.app/"
+                className="embed-responsive-item"
+                width="500px"
+                height="500px"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
-            <div className="col-md col-lg">
+            {/* <div className="col-md col-lg">
               <div className="embed-responsive embed-responsive-16by9">
                 <iframe
                   className="embed-responsive-item"
@@ -28,7 +37,7 @@ const Address = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

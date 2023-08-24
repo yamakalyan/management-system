@@ -16,9 +16,12 @@ const Products = () => {
             </p>
           </div>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-            <div className="col">
+            <div className="col" data-aos="zoom-in">
               <div className="card shadow-sm ">
-                <img src="vite.svg" className="img-fluid py-3 px-4" />
+                <img
+                  src="https://as1.ftcdn.net/v2/jpg/05/64/11/42/1000_F_564114238_mcU43Fplgq3J1wpxYUCvDIew9JxUbJrB.jpg"
+                  className="img-fluid py-3 px-4"
+                />
                 <div className="card-body">
                   <p className="card-text">
                     This is a wider card with supporting text below as a natural
@@ -45,9 +48,11 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" data-aos="zoom-in">
               <div className="card shadow-sm">
-                <img src="vite.svg" className="img-fluid py-3 px-4" />
+                {/* <iframe src="https://digitalindiaportal.co.in/users/pancard/Form49A.pdf" className="img-fluid"></iframe> */}
+
+                <img src="https://as1.ftcdn.net/v2/jpg/05/64/11/42/1000_F_564114238_mcU43Fplgq3J1wpxYUCvDIew9JxUbJrB.jpg" className="img-fluid py-3 px-4" />
                 <div className="card-body">
                   <p className="card-text">
                     This is a wider card with supporting text below as a natural
@@ -74,9 +79,9 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" data-aos="zoom-in">
               <div className="card shadow-sm">
-                <img src="vite.svg" className="img-fluid py-3 px-4" />
+                <img src="https://as1.ftcdn.net/v2/jpg/05/64/11/42/1000_F_564114238_mcU43Fplgq3J1wpxYUCvDIew9JxUbJrB.jpg" className="img-fluid py-3 px-4" />
                 <div className="card-body">
                   <p className="card-text">
                     This is a wider card with supporting text below as a natural
@@ -103,9 +108,9 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" data-aos="zoom-in">
               <div className="card shadow-sm">
-                <img src="vite.svg" className="img-fluid py-3 px-4" />
+                <img src="https://as1.ftcdn.net/v2/jpg/05/64/11/42/1000_F_564114238_mcU43Fplgq3J1wpxYUCvDIew9JxUbJrB.jpg" className="img-fluid py-3 px-4" />
                 <div className="card-body">
                   <p className="card-text">
                     This is a wider card with supporting text below as a natural
@@ -134,7 +139,6 @@ const Products = () => {
             </div>
           </div>
         </div>
-       
       </div>
     </div>
   );
