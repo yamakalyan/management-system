@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div>
-      <div>
+    <div id="navbar">
+      <div className="sticky-top">
         <nav
-          className="navbar navbar-expand-md bg-dark border-bottom sticky-top"
+          className="navbar navbar-expand-md bg-dark border-bottom "
           data-bs-theme="dark"
         >
           <div className="container">
-            <a className="navbar-brand me-4" href="#">
+            <Link className="navbar-brand me-4" to="/">
               KALYAN KN
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"

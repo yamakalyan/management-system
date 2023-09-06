@@ -1,4 +1,5 @@
 .main-card {
+    white-space: nowrap;
     position: relative;
     white-space: nowrap;
     overflow-x: hidden;
@@ -9,7 +10,7 @@
     top: 0%;
     right: 0%;
     /* width: 10%; */
-    animation: scroller 35s infinite linear;
+    animation: scroller 15s infinite linear;
     transform: translateX(100%);
     transition: 2s;
     position: absolute;
@@ -25,10 +26,10 @@
 }
 
 @keyframes scroller {
-    0% {
+    from {
         transform: translateX(100%);
     }
-    100% {
+    to {
         transform: translateX(-100%);
     }
 }

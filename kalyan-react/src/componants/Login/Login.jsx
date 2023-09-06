@@ -13,18 +13,18 @@ const Login = () => {
         <div className="row ">
           <div className="col-lg-4 col-md mx-auto">
             <form>
-              <h1 class="h3 mb-3 fw-normal text-center">
-                Please sign in <code>.{params.name}</code>
-              </h1>
+              <h2 class=" mb-3 fw-normal text-center">
+                Please sign in <code className="text-capitalize">.{params.name}</code>
+              </h2>
 
               <div class="form-floating mb-3">
                 <input
                   type="email"
                   class="form-control"
                   id="floatingInput"
-                  placeholder="name@example.com"
+                  placeholder="username"
                 />
-                <label for="floatingInput">Email address</label>
+                <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating">
                 <input

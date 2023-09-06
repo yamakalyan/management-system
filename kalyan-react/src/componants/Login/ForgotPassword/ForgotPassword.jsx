@@ -14,10 +14,10 @@ const ForgotPassword = () => {
             <div className="col-lg-4 col-md mx-auto">
               <form>
                 <div className="mb-3">
-                  <h1 class="h3 fw-normal text-uppercase">
+                  <h4 class="py-3 fw-normal text-uppercase">
                     {params.name} enter your{" "}
                     <code className="text-lowercase">.@email.com</code>
-                  </h1>
+                  </h4>
                 </div>
                 <div class="form-floating mb-3">
                   <input
