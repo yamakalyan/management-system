@@ -1,4 +1,4 @@
-import "./Banner.css"
+import "./Banner.css";
 const Banner3 = () => {
   return (
     <div>
@@ -8,14 +8,14 @@ const Banner3 = () => {
             <div className="container main-card">
               <div className="my-5 row-card-list-group">
                 <div className=" card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -24,14 +24,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className=" card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -40,14 +40,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className=" card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -56,14 +56,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className=" card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -72,14 +72,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className=" card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -88,14 +88,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className="card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -104,14 +104,14 @@ const Banner3 = () => {
                   </div>
                 </div>
                 <div className="card-list">
-                  <div class="card">
-                    <div class="card-header">Quote</div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
+                  <div className="card">
+                    <div className="card-header">Quote</div>
+                    <div className="card-body">
+                      <blockquote className="blockquote mb-0">
                         <p>
                           A well-known quote, contained in a blockquote element.
                         </p>
-                        <footer class="blockquote-footer">
+                        <footer className="blockquote-footer">
                           Someone famous in{" "}
                           <cite title="Source Title">Source Title</cite>
                         </footer>
@@ -139,6 +139,6 @@ const Banner3 = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Banner3
+export default Banner3;

@@ -18,7 +18,7 @@ const Hero = () => {
               going until we run out of words.
             </p>
             <a href="#" className="btn btn-primary btn-lg">
-              Get in Touch 
+              Get in Touch
             </a>
           </div>
 
@@ -30,7 +30,7 @@ const Hero = () => {
               >
                 <div>
                   <span className="h4">
-                    <i class="bi bi-card-checklist"></i>
+                    <i className="bi bi-card-checklist"></i>
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
@@ -47,7 +47,7 @@ const Hero = () => {
               >
                 <div>
                   <span className="h4">
-                    <i class="bi bi-bar-chart"></i>
+                    <i className="bi bi-bar-chart"></i>
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
@@ -64,7 +64,7 @@ const Hero = () => {
               >
                 <div>
                   <span className="h4">
-                    <i class="bi bi-bus-front"></i>
+                    <i className="bi bi-bus-front"></i>
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
@@ -81,7 +81,7 @@ const Hero = () => {
               >
                 <div>
                   <span className="h4">
-                    <i class="bi bi-buildings"></i>
+                    <i className="bi bi-buildings"></i>
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">

@@ -93,11 +93,6 @@ export default function Navbar() {
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/login/parent">
-                          Parent
-                        </Link>
-                      </li>
-                      <li>
                         <Link className="dropdown-item" to="/login/student">
                           Student
                         </Link>

@@ -10,6 +10,8 @@ import Address from "../Address/Address";
 import Banner2 from "../Banners/Banner2";
 import Banner3 from "../Banners/Banner3";
 import "./Home.css";
+
+
 const Home = () => {
   return (
     <div id="home" >
@@ -42,12 +44,12 @@ const Home = () => {
       </div>
       <Hero />
       <Banner1 />
-      <Products />
+      {/* <Products /> */}
       <Events />
       <Pricing />
       <Banner2 />
       {/* <Staff /> */}
-      <Banner3 />
+      {/* <Banner3 /> */}
       <Contact />
       {/* <Address/> */}
     </div>

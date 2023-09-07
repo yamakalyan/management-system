@@ -9,6 +9,8 @@ import "aos/dist/aos.css";
 import Header from "./componants/Navbar/Header";
 import Login from "./componants/Login/Login";
 import ForgotPassword from "./componants/Login/ForgotPassword/ForgotPassword";
+import { Authentication } from "./componants/Authorizers/Authentication";
+
 function App() {
   AOS.init({
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -31,7 +33,7 @@ function App() {
   });
 
   return (
-    <>
+    <Authentication>
       <Navbar />
       {/* <Header/> */}
       <Routes>
@@ -40,7 +42,7 @@ function App() {
         <Route path="/forgotpassword/:name" element={<ForgotPassword />} />
       </Routes>
       <Footer />
-    </>
+    </Authentication>
   );
 }
 

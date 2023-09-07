@@ -55,11 +55,11 @@ const Banner2 = () => {
                           <div>
                             <h1 className="display-5">4.5</h1>
                             <span>
-                              <i class="bi bi-star-fill text-warning "></i>
-                              <i class="bi bi-star-fill text-warning"></i>
-                              <i class="bi bi-star-fill text-warning"></i>
-                              <i class="bi bi-star-fill text-warning"></i>
-                              <i class="bi bi-star-half text-warning"></i>
+                              <i className="bi bi-star-fill text-warning "></i>
+                              <i className="bi bi-star-fill text-warning"></i>
+                              <i className="bi bi-star-fill text-warning"></i>
+                              <i className="bi bi-star-fill text-warning"></i>
+                              <i className="bi bi-star-half text-warning"></i>
                             </span>
                           </div>
                         </div>

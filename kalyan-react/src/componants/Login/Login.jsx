@@ -1,8 +1,38 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { BaseURL } from "../Helpers/Helpers";
 
 const Login = () => {
   const params = useParams();
+  const navigator = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginMsg, setLoginMsg] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const options = {
+      method: "post",
+      headers : {'Content-Type' : "application/json"},
+      body: JSON.stringify({
+        role: params.name,
+        user_name: username,
+        password: password,
+      }),
+    };
+    await fetch(BaseURL + "auth/login", options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          localStorage.setItem("authToken", data.token);
+          navigator("/profile");
+        } else {
+          setLoginMsg(data.message);
+          localStorage.removeItem("authToken");
+          // navigator(`/login/${params.name}`);
+        }
+      });
+  };
 
   return (
     <div
@@ -12,34 +42,43 @@ const Login = () => {
       <div className="container ">
         <div className="row ">
           <div className="col-lg-4 col-md mx-auto">
-            <form>
-              <h2 class=" mb-3 fw-normal text-center">
-                Please sign in <code className="text-capitalize">.{params.name}</code>
+            <form onSubmit={handleLogin}>
+              <h2 className=" mb-3 fw-normal text-center">
+                Please sign in{" "}
+                <code className="text-capitalize">.{params.name}</code>
               </h2>
 
-              <div class="form-floating mb-3">
+              <div className="form-floating mb-3">
                 <input
-                  type="email"
-                  class="form-control"
+                  type="text"
+                  className="form-control"
                   id="floatingInput"
                   placeholder="username"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
-                <label for="floatingInput">Username</label>
+                <label>Username</label>
               </div>
-              <div class="form-floating">
+              <div className="form-floating">
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <label for="floatingPassword">Password</label>
+                <label>Password</label>
               </div>
 
-              <div class="my-3">
-                Did you <Link to={`/forgotpassword/${params.name}`} >forgot password ?</Link>
+              <div className="my-3">
+                <p className="text-danger text-center">{loginMsg}</p>
               </div>
-              <button class="btn btn-primary w-100 py-2" type="submit">
+              <div className="my-3">
+                Did you{" "}
+                <Link to={`/forgotpassword/${params.name}`}>
+                  forgot password ?
+                </Link>
+              </div>
+              <button className="btn btn-primary w-100 py-2" type="submit">
                 Sign in
               </button>
             </form>
