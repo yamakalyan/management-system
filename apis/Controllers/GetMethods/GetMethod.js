@@ -1,7 +1,9 @@
 const database = require("../../Config/database")
 
 const getUnique = async (req, res, next) => {
-    const {id} = req.params
+    const {
+        id
+    } = req.params
 
     const columnName = req.role + "_id"
 

@@ -76,7 +76,7 @@ const postCreate = async (req, res, next) => {
                         })
                     } else {
                         if (mobileCheckResults.length == 0) {
-                            const createSql = `INSERT INTO ${tableName} SET ?`
+                            const createSql = `UPDATE ${tableName} SET ? WHERE ?`
 
                             database.query(createSql, combinigToObject, (err, results) => {
                                 if (err) {
@@ -110,8 +110,4 @@ const postCreate = async (req, res, next) => {
         }
     })
 
-}
-
-module.exports = {
-    postCreate
 }

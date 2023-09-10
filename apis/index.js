@@ -49,8 +49,7 @@ app.use(cors(corsOpts));
 app.use(async (error, req, res, next) => {
   error.message = (await error.message) || "Something went wrong";
   error.name = (await error.name) || "";
-  res.status(error.status || 500);
-  res.json({
+  res.status(error.status || 500).json({
     success: false,
     error,
   });

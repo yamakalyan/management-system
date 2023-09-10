@@ -88,7 +88,7 @@ Auth.post("/login", (req, res, next) => {
                 break;
         }
 
-        const checkSql = `SELECT * FROM ${tableName} WHERE email='${req.body.user_name}' OR mobile='${req.body.user_name}' AND ifdeleted='0'`
+        const checkSql = `SELECT * FROM ${tableName} WHERE email='${req.body.username}' OR mobile='${req.body.username}' AND ifdeleted='0'`
         database.query(checkSql, (err, results) => {
             if (err) {
                 res.status(400).json({

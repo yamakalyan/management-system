@@ -4,6 +4,7 @@ const database = require("../Config/database");
 const table = require("../Helpers/Tables");
 const jwtVerify = require("../Helpers/JwtVerify");
 const googleSheetInsert = require("../Helpers/googleSheets/PostGoogleSheet")
+
 const {
   getUnique,
   getList,
@@ -27,10 +28,10 @@ admin.get("/profile/:id", jwtVerify, getUnique, async (req, res, next) => {
 // LIST
 admin.get("/list", jwtVerify, getList, async (req, res, next) => {
   try {
-    res.json(req.getListResults)
+    return res.json(req.getListResults)
 
   } catch (error) {
-    next(error);
+    next(error)
   }
 });
 
