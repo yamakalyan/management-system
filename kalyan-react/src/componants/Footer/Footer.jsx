@@ -1,4 +1,3 @@
-
 const Footer = () => {
   return (
     <div className="text-light bg-dark">
@@ -134,9 +133,22 @@ const Footer = () => {
             </div>
           </div>
         </section>
+        <div className="row text-center py-3">
+          <div className="col mx-auto">
+            <code>
+              Developed by{" "}
+              <a
+                href="https://yamakalyan3120.web.app/"
+                style={{ textDecoration: "none", color: "inherit" }}
+                className="font-monospace">
+                yamakalyan
+              </a>
+            </code>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Footer
+export default Footer;

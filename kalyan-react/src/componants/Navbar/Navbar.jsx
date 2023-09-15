@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { Auth } from "../Authorizers/Authentication";
+import {
+  homeNavbarRoutes,
+  staffNavbarRoutes,
+  studentNavbarRoutes,
+  managementNavbarRoutes,
+} from "./NavRoutes/NavRoutes";
 
 export default function Navbar() {
+  const auth = Auth();
   return (
     <div id="navbar">
       <div className="sticky-top">
@@ -8,9 +16,9 @@ export default function Navbar() {
           className="navbar navbar-expand-md bg-dark border-bottom "
           data-bs-theme="dark"
         >
-          <div className="container">
-            <Link className="navbar-brand me-4" to="/">
-              KALYAN KN
+          <div className="container-fluid mx-4">
+            <Link className="navbar-brand" to="/">
+              {auth.management ? "Management" : auth.staff ? "Staff" : auth.student ? "Student" : "KALYAN KN"}
             </Link>
             <button
               className="navbar-toggler"
@@ -20,6 +28,7 @@ export default function Navbar() {
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              
             >
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -48,75 +57,13 @@ export default function Navbar() {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav flex-grow-1 justify-content-between">
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#about">
-                      <i className="bi bi-person-bounding-box me-2"></i>
-                      <span>About</span>
-                    </a>
-                  </li>
-                  {/* <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Help
-                    </a>
-                  </li> */}
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#products">
-                      <i className="bi bi-box me-2"></i>
-                      <span>Products</span>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#">
-                      <i className="bi bi-sliders me-2"></i>
-                      <span> Features</span>
-                    </a>
-                  </li>
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                    >
-                      <i className="bi bi-people-fill me-2"></i>
-                      <span> Staff</span>
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to="/login/management">
-                          Management
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/login/teacher">
-                          Teacher
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/login/student">
-                          Student
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#">
-                      <i className="bi bi-wrench-adjustable-circle me-2"></i>
-                      <span>Support</span>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#">
-                      <i className="bi bi-tag-fill me-2"></i>
-                      <span>Pricing</span>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/#contact">
-                      <i className="bi bi-person-lines-fill me-2"></i>
-                      <span> Contact</span>
-                    </a>
-                  </li>
+                  {auth.management
+                    ? managementNavbarRoutes()
+                    : auth.staff
+                    ? staffNavbarRoutes()
+                    : auth.student
+                    ? studentNavbarRoutes()
+                    : homeNavbarRoutes()}
                 </ul>
               </div>
             </div>

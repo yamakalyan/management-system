@@ -13,10 +13,10 @@ const Login = () => {
     e.preventDefault();
     const options = {
       method: "post",
-      headers : {'Content-Type' : "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         role: params.name,
-        user_name: username,
+        username: username,
         password: password,
       }),
     };
@@ -25,11 +25,12 @@ const Login = () => {
       .then((data) => {
         if (data.success) {
           localStorage.setItem("authToken", data.token);
-          navigator("/profile");
+          navigator(`/profile/${params.name}`);
+          window.location.reload(false);
         } else {
           setLoginMsg(data.message);
           localStorage.removeItem("authToken");
-          // navigator(`/login/${params.name}`);
+          // navigator();
         }
       });
   };
@@ -55,6 +56,7 @@ const Login = () => {
                   id="floatingInput"
                   placeholder="username"
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
                 <label>Username</label>
               </div>
@@ -65,6 +67,7 @@ const Login = () => {
                   id="floatingPassword"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <label>Password</label>
               </div>

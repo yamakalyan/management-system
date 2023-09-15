@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <div>
       <div className="container px-4 py-5 my-3">
-        <h2 className="pb-2 border-bottom">WEL COME TO OUR PAGE :{">"}</h2>
+        <h2 className="pb-2 border-bottom">WEL COME </h2>
 
         <div className="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-3 my-auto">
           <div
@@ -10,16 +12,16 @@ const Hero = () => {
             data-aos="fade-right"
           >
             <h2 className="fw-bold text-body-emphasis">
-              Left-aligned title explaining these awesome features
+              NISHITA COMMERCE AND SCIENCE COLLEGE
             </h2>
             <p className="text-body-secondary">
               Paragraph of text beneath the heading to explain the heading.
               We'll add onto it with another sentence and probably just keep
               going until we run out of words.
             </p>
-            <a href="#" className="btn btn-primary btn-lg">
-              Get in Touch
-            </a>
+            <Link to="/about" className="btn btn-primary btn-lg">
+              know more..
+            </Link>
           </div>
 
           <div className="col">
@@ -34,7 +36,7 @@ const Hero = () => {
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
-                  Featured title
+                  Certified Staff
                 </h4>
                 <p className="text-body-secondary">
                   Paragraph of text beneath the heading to explain the heading.
@@ -51,7 +53,7 @@ const Hero = () => {
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
-                  Featured title
+                  High-scored Records
                 </h4>
                 <p className="text-body-secondary">
                   Paragraph of text beneath the heading to explain the heading.
@@ -68,7 +70,7 @@ const Hero = () => {
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
-                  Featured title
+                  Vehicle Services
                 </h4>
                 <p className="text-body-secondary">
                   Paragraph of text beneath the heading to explain the heading.
@@ -85,7 +87,7 @@ const Hero = () => {
                   </span>
                 </div>
                 <h4 className="fw-semibold mb-0 text-body-emphasis">
-                  Featured title
+                  Beautiful Buildings
                 </h4>
                 <p className="text-body-secondary">
                   Paragraph of text beneath the heading to explain the heading.

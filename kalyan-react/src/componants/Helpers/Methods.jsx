@@ -1,17 +1,15 @@
 import { BaseURL } from "./Helpers";
 
-export const GET = async (Url) => {
+export const getProfileMethod = async (Url) => {
+  const token = localStorage.getItem("authToken");
+
   const options = {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", header_key: token },
   };
-  await fetch(BaseURL + Url, options)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        return data.results;
-      } else {
-        return data.results;
-      }
-    });
+
+  const response = await fetch(BaseURL + Url, options);
+  const data = await response.json();
+  const results = data.success ? data.results : "Error occured" + data.message;
+  return results;
 };

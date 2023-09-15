@@ -3,6 +3,9 @@ const cors = require("cors");
 const app = express();
 const admin = require("./Controllers/AdminController");
 const Auth = require("./Controllers/Authorizers/Auth");
+const management = require("./Controllers/ManagementController");
+const staff = require("./Controllers/StaffController");
+const student = require("./Controllers/StudentController");
 
 require("dotenv").config();
 
@@ -56,4 +59,7 @@ app.use(async (error, req, res, next) => {
 });
 
 app.use("/api/admin", admin);
+app.use("/api/management", management);
+app.use("/api/staff", staff);
+app.use("/api/student", student);
 app.use("/api/auth", Auth)

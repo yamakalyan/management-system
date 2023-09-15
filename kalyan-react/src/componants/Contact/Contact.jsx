@@ -4,13 +4,10 @@ export default function Contact() {
       <div>
         <div className="container">
           <div className="row py-5" id="contact">
-            <div className="col-md col-lg py-3" data-aos="zoom-out">
-              <div
-                className="text-center"
-                style={{ display: "grid", placeItems: "center" }}
-              >
-                <h2 className="text-secondary display-4">Reach Out to Us</h2>
-                <hr className="my-1 text-primary" style={{ width: "30%" }} />
+            <div className="col-md col-lg py-5" data-aos="zoom-out">
+              <div className="py-2">
+                <h1 className="text-secondary">Reach Out to Us</h1>
+                <hr className="my-1 text-primary" style={{ width: "60%" }} />
                 <p className="lead mt-0">
                   {/* reach to us if you have any queries. */}
                 </p>

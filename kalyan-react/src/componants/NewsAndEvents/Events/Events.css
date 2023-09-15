@@ -1,0 +1,33 @@
+.event-1 {
+    background-image: url("https://evergreengroup.in/wp-content/uploads/2017/07/Arya-Gurukul-School-Annual-Day-14-1024x516.jpg");
+    background-position: center center;
+
+}
+
+.event-2 {
+    background-image: url("https://d2ostr1nawkjr.cloudfront.net/app/uploads/2022/11/26035227/engaging-students-in-schoolwide-cultural-events-OPT.jpg");
+    background-position: center center;
+
+}
+
+.event-3 {
+    background-image: url("https://www.educationworld.in/wp-content/uploads/2022/03/School-Children-1-500x375-1.jpg");
+    background-position: center center;
+
+}
+
+.event-1-bg .text-para {
+    color: transparent;
+    transition: 1s;
+}
+
+.event-1-bg:hover {
+    background-color: #13131387;
+    color: white;
+    transition: 1s;
+}
+
+.text-para:hover {
+    color: white;
+    transition: 1s;
+}

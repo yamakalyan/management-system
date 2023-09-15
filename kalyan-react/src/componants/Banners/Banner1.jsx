@@ -7,12 +7,14 @@ const Banner1 = () => {
             <div className="my-5" data-aos="zoom-in">
               <div className="py-5 text-center">
                 <div className="container py-5">
-                  <h1 className="text-body-emphasis">Banner 1 Description</h1>
+                  <h1 className="text-body-emphasis">
+                    <q>Empowering Minds Through Education</q>
+                  </h1>
                   <p className="col-lg-8 mx-auto lead">
-                    This takes the basic jumbotron above and makes its
-                    background edge-to-edge with a <code>.container</code>{" "}
-                    inside to align content. Similar to above, it's been
-                    recreated with built-in grid and utility classes.
+                    Education is the catalyst for personal growth and societal
+                    progress. At <span className="h5 font-monospace">Nishita Commerce  and science college</span>, we are committed to
+                    empowering minds, fostering innovation, and shaping leaders.
+                    Join us on this transformative journey.
                   </p>
                 </div>
               </div>

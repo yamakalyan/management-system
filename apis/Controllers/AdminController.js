@@ -16,7 +16,7 @@ const {
 
 
 // PROFILE
-admin.get("/profile/:id", jwtVerify, getUnique, async (req, res, next) => {
+admin.get("/by/:id", jwtVerify, getUnique, async (req, res, next) => {
   try {
     res.status(200).json(req.getuniqueResults)
 

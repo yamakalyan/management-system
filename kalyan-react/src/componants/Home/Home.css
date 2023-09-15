@@ -7,7 +7,7 @@
 }
 
 .Home-page .home-bg-image {
-    background-image: url("https://t4.ftcdn.net/jpg/05/75/84/99/360_F_575849931_j0h5pEWF8XMd9OhGZhbODPL1ELaMQR75.jpg");
+    background-image: url("/High School-bro.svg");
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@
 }
 
 .home-bg-image .bg-transparent-color {
-    background: #00000081;
+    background: #00000057;
     height: 100%;
     width: 100%;
     transition: 1s;

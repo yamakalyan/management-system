@@ -8,7 +8,6 @@ export const Authentication = ({ children }) => {
   const [staff, setStaff] = useState(false);
   const [management, setManagement] = useState(false);
   const [student, setStudent] = useState(false);
-  const [parent, setParent] = useState(false);
 
   const Token = localStorage.getItem("authToken");
 
@@ -20,9 +19,8 @@ export const Authentication = ({ children }) => {
       localStorage.removeItem("authToken");
       setManagement(false);
       setStaff(false);
-      setParent(false);
       setStudent(false);
-      navigator("/");
+      // navigator("/");
     };
 
     const fetchAuthentication = async () => {
@@ -33,14 +31,12 @@ export const Authentication = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            data.role === "management"
-              ? setManagement(data.success)
-              : data.role === "staff"
-              ? setStaff(data.success)
-              : data.role === "student"
-              ? setStudent(data.success)
-              : data.role === "parent"
-              ? setParent(data.success)
+            data.results.role === "management"
+              ? setManagement(true)
+              : data.results.role === "staff"
+              ? setStaff(true)
+              : data.results.role === "student"
+              ? setStudent(true)
               : removeTokensAndPermissions();
           } else {
             removeTokensAndPermissions();
@@ -48,24 +44,10 @@ export const Authentication = ({ children }) => {
         });
     };
     fetchAuthentication();
-
-    // managementToken !== null || undefined
-    //   ? fetchAuthentication()
-    //   : staffToken !== null || undefined
-    //   ? fetchAuthentication()
-    //   : studentToken !== null || undefined
-    // ? fetchAuthentication()
-    //   : parentToken !== null || undefined
-    //   ? fetchAuthentication()
-    //   : removeTokensAndPermissions();
   }, []);
 
-  console.log(staff)
-  console.log(management)
-  console.log(student)
-
   return (
-    <authProvider.Provider value={{ management, staff, parent, student }}>
+    <authProvider.Provider value={{ management, staff, student }}>
       {children}
     </authProvider.Provider>
   );

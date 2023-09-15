@@ -1,6 +1,6 @@
 const database = require("../../Config/database")
 
-const postCreate = async (req, res, next) => {
+const putCreate = async (req, res, next) => {
     const values = req.body.values
     const tableName = req.body.role
 

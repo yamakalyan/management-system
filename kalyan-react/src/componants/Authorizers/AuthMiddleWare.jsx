@@ -1,26 +1,20 @@
 import { Auth } from "./Authentication";
 import { useNavigate } from "react-router-dom";
 
-export const AuthMiddleWare = ({ children }) => {
+export const AuthManagementMiddleWare = ({ children }) => {
   const auth = Auth();
   const navigator = useNavigate();
-  return auth.recruiter ? children : navigator("/");
+  return auth.management ? children : navigator("/");
 };
 
-export const AuthCheckSaleRecruiter = ({ children }) => {
+export const AuthStaffMiddleWare = ({ children }) => {
   const auth = Auth();
   const navigator = useNavigate();
-  return auth.saleRecruiter ? children : navigator("/");
+  return auth.staff ? children : navigator("/");
 };
 
-export const AuthCheckRecruiterBoth = ({ children }) => {
+export const AuthStudentMiddleWare = ({ children }) => {
   const auth = Auth();
   const navigator = useNavigate();
-  return auth.saleRecruiter || auth.recruiter ? children : navigator("/");
-};
-
-export const AuthCheckAdmin = ({ children }) => {
-  const auth = Auth();
-  const navigator = useNavigate();
-  return auth.admin ? children : navigator("/");
+  return auth.student ? children : navigator("/");
 };

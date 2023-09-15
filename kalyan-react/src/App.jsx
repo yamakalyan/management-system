@@ -6,10 +6,31 @@ import Home from "./componants/Home/Home";
 import Footer from "./componants/Footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "./componants/Navbar/Header";
 import Login from "./componants/Login/Login";
 import ForgotPassword from "./componants/Login/ForgotPassword/ForgotPassword";
 import { Authentication } from "./componants/Authorizers/Authentication";
+import { Profile } from "./componants/Profile/Profile";
+import { Dashboard } from "./componants/Dashboard/Dashboard";
+import { Accounting } from "./componants/Management/Accounting/Accounting";
+import { Attendance } from "./componants/Management/Attendance/Attendance";
+import { CreateExpanse } from "./componants/Add/CreateExpanse";
+import { CreateEvent } from "./componants/Add/AddRoutes/CreateEvent";
+import { Expanses } from "./componants/Add/AddRoutes/Expanses";
+import { Other } from "./componants/Add/AddRoutes/Other";
+import { FeeManagement } from "./componants/FeeManagement/FeeManagement";
+import { ReportCards } from "./componants/ReportCards/ReportCards";
+import { Inventory } from "./componants/inventory/Inventory";
+import About from "./componants/About/About";
+import { Admission } from "./componants/Admissions/Admission";
+import { Faculty } from "./componants/Faculty/Faculty";
+import NewsAndEvents from "./componants/NewsAndEvents/NewsAndEvents";
+import Contact from "./componants/Contact/Contact";
+import AdmissionProcess from "./componants/Admissions/ADmissionProcess/AdmissionProcess";
+import AdmissionReq from "./componants/Admissions/AdmissionReq/AdmissionReq";
+import ScholarShip from "./componants/Admissions/ScholarShip/ScholarShip";
+import { Events } from "./componants/NewsAndEvents/Events/Events";
+import News from "./componants/NewsAndEvents/News/News";
+import Notifications from "./componants/NewsAndEvents/Notifications/Notifications";
 
 function App() {
   AOS.init({
@@ -37,9 +58,59 @@ function App() {
       <Navbar />
       {/* <Header/> */}
       <Routes>
+        {/* HOME PAGE */}
+
         <Route path="/" element={<Home />} />
         <Route path="/login/:name" element={<Login />} />
         <Route path="/forgotpassword/:name" element={<ForgotPassword />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admission" element={<Admission />}>
+          <Route
+            path="/admission/admissionprocess"
+            element={<AdmissionProcess />}
+          />
+          <Route
+            path="/admission/admissionrequirements"
+            element={<AdmissionReq />}
+          />
+          <Route path="/admission/scholarships" element={<ScholarShip />} />
+        </Route>
+        <Route path="/faculty" element={<Faculty />} />
+        <Route path="/newsandevents" element={<NewsAndEvents />} >
+          <Route path="/newsandevents/events" element={<Events/>} />
+          <Route path="/newsandevents/news" element={<News/>} />
+          <Route path="/newsandevents/eventscalendar" element={<Notifications/>} />
+        </Route>
+
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Profile */}
+        <Route path="/profile/:name" element={<Profile />} />
+
+        {/* Dashboard */}
+        <Route path="/dashboard/:name" element={<Dashboard />} />
+
+        {/* Accounting */}
+        <Route path="/accounting/:name" element={<Accounting />} />
+
+        {/* Attendance */}
+        <Route path="/attendance/:name" element={<Attendance />} />
+
+        {/* Adding or create */}
+        <Route path="/add/" element={<CreateExpanse />}>
+          <Route path="/add/expanses" element={<Expanses />} />
+          <Route path="/add/events" element={<CreateEvent />} />
+          <Route path="/add/others" element={<Other />} />
+        </Route>
+
+        {/* Fee management */}
+        <Route path="/fee-management" element={<FeeManagement />} />
+
+        {/* inventory */}
+        <Route path="/inventory" element={<Inventory />} />
+
+        {/* Report cards */}
+        <Route path="/report-cards" element={<ReportCards />} />
       </Routes>
       <Footer />
     </Authentication>
