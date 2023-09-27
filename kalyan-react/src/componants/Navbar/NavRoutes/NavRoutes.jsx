@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+export let conditionalRoutes = [];
+
 export const homeNavbarRoutes = () => {
   const routes = [
     {
@@ -46,10 +48,7 @@ export const homeNavbarRoutes = () => {
         icon: "bi bi-newspaper",
         sub_names: [
           {
-            word: "News",
-          },
-          {
-            word: "Events Calendar",
+            word: "Notifications",
           },
           {
             word: "Events",
@@ -83,6 +82,8 @@ export const homeNavbarRoutes = () => {
       },
     },
   ];
+  conditionalRoutes = routes;
+
   const mapping = routes.map((route, id) => {
     return (
       <>
@@ -156,24 +157,24 @@ export const managementNavbarRoutes = () => {
         heading: "Accounting",
         sub_names: [
           {
-            word: "Fee related",
+            word: "Fee management",
           },
           {
-            word: "salaries",
+            word: "Salaries",
           },
           {
             word: "Expanses",
           },
-          {
-            word: "Other",
-          },
+          // {
+          //   word: "Other",
+          // },
         ],
       },
     },
-    {
-      name: "Fee-management",
-      icon: "bi bi-wrench-adjustable-circle",
-    },
+    // {
+    //   name: "Fee-management",
+    //   icon: "bi bi-wrench-adjustable-circle",
+    // },
     {
       name: {
         heading: "Attendance",
@@ -195,25 +196,64 @@ export const managementNavbarRoutes = () => {
         heading: "Add",
         sub_names: [
           {
+            word: "Salaries",
+          },
+          {
+            word: "Fee ",
+          },
+          {
             word: "Expanses",
           },
           {
             word: "Events",
           },
           {
-            word: "Others",
+            word: "Notifications",
+          },
+          {
+            word: "Laboratory",
+          },
+          {
+            word: "Library",
+          },
+          {
+            word: "Sports ",
           },
         ],
       },
     },
     {
-      name: "Report-cards",
-      icon: "bi bi-tag-fill",
+      name: {
+        heading: "Cards",
+        sub_names: [
+          {
+            word: "Report Cards",
+          },
+          {
+            word: "Hall Tickets",
+          },
+        ],
+      },
     },
-    {
-      name: "Inventory",
-      icon: "bi bi-tag-fill",
-    },
+    // {
+    //   name: {
+    //     heading: "Inventory",
+    //     sub_names: [
+    //       {
+    //         word: "Lab records",
+    //       },
+    //       {
+    //         word: "Library records",
+    //       },
+    //       {
+    //         word: "Sports related",
+    //       },
+    //       {
+    //         word: "Others",
+    //       },
+    //     ],
+    //   },
+    // },
     {
       name: "Dashboard",
       icon: "bi bi-tag-fill",
@@ -249,7 +289,9 @@ export const managementNavbarRoutes = () => {
                       <>
                         <Link
                           className="dropdown-item"
-                          to={`/${route.name.heading.toLowerCase()}/${data.word.toLowerCase()}`}
+                          to={`/${route.name.heading.toLowerCase()}/${data.word
+                            .toLowerCase()
+                            .replace(/\s/g, "")}`}
                         >
                           {data.word}
                         </Link>

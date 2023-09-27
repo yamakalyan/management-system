@@ -13,13 +13,12 @@ import { Profile } from "./componants/Profile/Profile";
 import { Dashboard } from "./componants/Dashboard/Dashboard";
 import { Accounting } from "./componants/Management/Accounting/Accounting";
 import { Attendance } from "./componants/Management/Attendance/Attendance";
-import { CreateExpanse } from "./componants/Add/CreateExpanse";
-import { CreateEvent } from "./componants/Add/AddRoutes/CreateEvent";
-import { Expanses } from "./componants/Add/AddRoutes/Expanses";
-import { Other } from "./componants/Add/AddRoutes/Other";
-import { FeeManagement } from "./componants/FeeManagement/FeeManagement";
+import { CreateExpanse } from "./componants/Management/Add/CreateExpanse";
+import { CreateEvent } from "./componants/Management/Add/AddRoutes/CreateEvent";
+import { Expanses } from "./componants/Management/Add/AddRoutes/Expanses";
+import { Other } from "./componants/Management/Add/AddRoutes/Other";
 import { ReportCards } from "./componants/ReportCards/ReportCards";
-import { Inventory } from "./componants/inventory/Inventory";
+import { Inventory } from "./componants/Management/inventory/Inventory";
 import About from "./componants/About/About";
 import { Admission } from "./componants/Admissions/Admission";
 import { Faculty } from "./componants/Faculty/Faculty";
@@ -29,37 +28,51 @@ import AdmissionProcess from "./componants/Admissions/ADmissionProcess/Admission
 import AdmissionReq from "./componants/Admissions/AdmissionReq/AdmissionReq";
 import ScholarShip from "./componants/Admissions/ScholarShip/ScholarShip";
 import { Events } from "./componants/NewsAndEvents/Events/Events";
-import News from "./componants/NewsAndEvents/News/News";
-import Notifications from "./componants/NewsAndEvents/Notifications/Notifications";
+import Notifications from "./componants/Management/Add/AddRoutes/Notifications";
+import Notification from "./componants/NewsAndEvents/Notifications/Notifications";
+import ViewAccounting from "./componants/Management/Accounting/ViewAccounting/ViewAccounting";
+import Sports from "./componants/Management/Add/AddRoutes/Sports";
+import Labrotory from "./componants/Management/Add/AddRoutes/Labrotory";
+import Library from "./componants/Management/Add/AddRoutes/Library";
+import Salaries from "./componants/Management/Accounting/Outlets/Salaries";
+import ShowExpanses from "./componants/Management/Accounting/Outlets/ShowExpanses";
+import FeeManagement from "./componants/Management/Accounting/Outlets/FeeManagement";
+
+// NAV LINKS FOR CONDITIONAL ACTIVATING ROUTES
+import { conditionalRoutes } from "./componants/Navbar/NavRoutes/NavRoutes";
+import { useEffect } from "react";
+import FeemanagementAdd from "./componants/Management/Add/AddRoutes/FeemanagementAdd";
+import SalariesAdd from "./componants/Management/Add/AddRoutes/SalariesAdd";
 
 function App() {
   AOS.init({
-    disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-    startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
-    initClassName: "aos-init", // class applied after initialization
-    animatedClassName: "aos-animate", // class applied on animation
-    useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-    disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-    debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-    throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-
-    // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-    offset: 120, // offset (in px) from the original trigger point
-    delay: 0, // values from 0 to 3000, with step 50ms
-    duration: 700, // values from 0 to 3000, with step 50ms
-    easing: "ease", // default easing for AOS animations
-    once: true, // whether animation should happen only once - while scrolling down
-    mirror: false, // whether elements should animate out while scrolling past them
-    anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+    disable: false,
+    startEvent: "DOMContentLoaded",
+    initClassName: "aos-init",
+    animatedClassName: "aos-animate",
+    useClassNames: false,
+    disableMutationObserver: false,
+    throttleDelay: 99,
+    offset: 0,
+    delay: 0,
+    duration: 700,
+    easing: "ease",
+    once: true,
+    mirror: false,
+    anchorPlacement: "top-bottom",
   });
+
+  useEffect(() => {
+    const homeRoutes = conditionalRoutes.map((name) => {
+      return name.name.heading
+    })
+  }, []);
 
   return (
     <Authentication>
       <Navbar />
-      {/* <Header/> */}
       <Routes>
         {/* HOME PAGE */}
-
         <Route path="/" element={<Home />} />
         <Route path="/login/:name" element={<Login />} />
         <Route path="/forgotpassword/:name" element={<ForgotPassword />} />
@@ -76,12 +89,13 @@ function App() {
           <Route path="/admission/scholarships" element={<ScholarShip />} />
         </Route>
         <Route path="/faculty" element={<Faculty />} />
-        <Route path="/newsandevents" element={<NewsAndEvents />} >
-          <Route path="/newsandevents/events" element={<Events/>} />
-          <Route path="/newsandevents/news" element={<News/>} />
-          <Route path="/newsandevents/eventscalendar" element={<Notifications/>} />
+        <Route path="/newsandevents" element={<NewsAndEvents />}>
+          <Route path="/newsandevents/events" element={<Events />} />
+          <Route
+            path="/newsandevents/notifications"
+            element={<Notification />}
+          />
         </Route>
-
         <Route path="/contact" element={<Contact />} />
 
         {/* Profile */}
@@ -91,26 +105,37 @@ function App() {
         <Route path="/dashboard/:name" element={<Dashboard />} />
 
         {/* Accounting */}
-        <Route path="/accounting/:name" element={<Accounting />} />
+        <Route path="/accounting" element={<Accounting />}>
+          <Route
+            path="/accounting/:group/:name"
+            element={<ViewAccounting />}
+          />
+          <Route path="/accounting/salaries" element={<Salaries />} />
+          <Route path="/accounting/expanses" element={<ShowExpanses />} />
+          <Route path="/accounting/feemanagement" element={<FeeManagement />} />
+        </Route>
 
         {/* Attendance */}
+        <Route path="/attendance/:name" element={<Attendance />} />
         <Route path="/attendance/:name" element={<Attendance />} />
 
         {/* Adding or create */}
         <Route path="/add/" element={<CreateExpanse />}>
+          <Route path="/add/fee" element={<FeemanagementAdd />} />
+          <Route path="/add/salaries" element={<SalariesAdd />} />
           <Route path="/add/expanses" element={<Expanses />} />
           <Route path="/add/events" element={<CreateEvent />} />
+          <Route path="/add/notifications" element={<Notifications />} />
+          <Route path="/add/sports" element={<Sports />} />
+          <Route path="/add/laboratory" element={<Labrotory />} />
+          <Route path="/add/library" element={<Library />} />
           <Route path="/add/others" element={<Other />} />
         </Route>
-
-        {/* Fee management */}
-        <Route path="/fee-management" element={<FeeManagement />} />
-
         {/* inventory */}
-        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/:name" element={<Inventory />} />
 
         {/* Report cards */}
-        <Route path="/report-cards" element={<ReportCards />} />
+        <Route path="/cards/:name" element={<ReportCards />} />
       </Routes>
       <Footer />
     </Authentication>

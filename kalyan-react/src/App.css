@@ -3,7 +3,10 @@
   padding: 0;
   scroll-behavior: smooth;
   box-sizing: border-box;
-  /* background: #f8f9fa; */
+  background: #e9ecef;
+}
+a{
+  text-decoration: none;
 }
 
 .pre-loader{

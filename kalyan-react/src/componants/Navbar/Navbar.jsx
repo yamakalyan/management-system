@@ -13,7 +13,7 @@ export default function Navbar() {
     <div id="navbar">
       <div className="sticky-top">
         <nav
-          className="navbar navbar-expand-md bg-dark border-bottom "
+          className="navbar navbar-expand-md bg-dark border-bottom"
           data-bs-theme="dark"
         >
           <div className="container-fluid mx-4">

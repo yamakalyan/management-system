@@ -3,10 +3,10 @@ const Notifications = () => {
     <div>
       <div className="container-fluid bg-light">
         <div className="container py-4">
-          <div className="mb-3 py-2">
+          {/* <div className="mb-3 py-2">
             <h2 className="text-secondary display-5 ">Notifications</h2>
             <hr style={{ width: "50%", borderTop: "4px solid green" }} />
-          </div>
+          </div> */}
           <div className="row py-5" data-aos="zoom-out">
             <div className="col-md col-lg my-auto">
               <div className="">

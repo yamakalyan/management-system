@@ -5,7 +5,7 @@ export const CreateExpanse = () => {
   
   return (
     <div>
-      <div className="container py-5">
+      <div className="container py-5" >
           <Outlet />
       </div>
     </div>
