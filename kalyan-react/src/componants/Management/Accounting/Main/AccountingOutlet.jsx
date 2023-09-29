@@ -1,9 +1,27 @@
 import { useState } from "react";
 import { Loader1 } from "../../../Loaders/Loader1";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import SearchInputs from "../../../SearchInputs/SearchInputs";
 
-const FeeManagement = () => {
+const AccountingOutlet = () => {
   const [loader, setLoader] = useState(false);
+  const [hover1, setHover1] = useState(false);
+  const [hover2, setHover2] = useState(false);
+  const [hover3, setHover3] = useState(false);
+  const [hover4, setHover4] = useState(false);
+
+  const [valueOne, setValueOne] = useState("");
+  const [valuetwo, setValueTwo] = useState("");
+  const [valueThree, setValueThree] = useState("");
+  
+  const handleChange = (firstValue, secondValue, thirdValue) => {
+    setValueOne(firstValue);
+    setValueTwo(secondValue);
+    setValueThree(thirdValue);
+  };
+
+  const params = useParams();
+  const ifFee = params.name == "feemanagement" ? "fees" : params.name
 
   return (
     <div>
@@ -17,13 +35,19 @@ const FeeManagement = () => {
                 <div className="shadow p-4 rounded-2 bg-light">
                   <div className="my-2">
                     <p className="lead text-capitalize fw-bold text-primary">
-                      showing information about Fee's.
+                      showing information about {ifFee}
                     </p>
                   </div>
                   <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                     <div className="col">
-                      <div className="card mb-3 text-bg-success border-3 border-success">
-                        <Link to="/accounting/fees/paid" className="text-light">
+                      <div
+                        className={`card mb-3 text-bg-success border-3 border-success ${
+                          hover1 ? " shadow" : ""
+                        }`}
+                        onMouseEnter={() => setHover1(true)}
+                        onMouseLeave={() => setHover1(false)}
+                      >
+                        <Link to={`/accounting/${ifFee}/paid`} className="text-light">
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2 ">
@@ -34,8 +58,14 @@ const FeeManagement = () => {
                       </div>
                     </div>
                     <div className="col">
-                      <div className="card mb-3 text-bg-danger border-3 border-danger">
-                        <Link to="/accounting/fees/due" className="text-light">
+                      <div
+                        className={`card mb-3 text-bg-danger border-3 border-danger ${
+                          hover2 ? " shadow" : ""
+                        }`}
+                        onMouseEnter={() => setHover2(true)}
+                        onMouseLeave={() => setHover2(false)}
+                      >
+                        <Link to={`/accounting/${ifFee}/due`} className="text-light">
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2">
@@ -46,8 +76,17 @@ const FeeManagement = () => {
                       </div>
                     </div>
                     <div className="col">
-                      <div className="card mb-3 text-bg-primary border-3 border-primary">
-                        <Link to="/accounting/fees/totalpaid" className="text-light">
+                      <div
+                        className={`card mb-3 text-bg-primary border-3 border-primary ${
+                          hover3 ? " shadow" : ""
+                        }`}
+                        onMouseEnter={() => setHover3(true)}
+                        onMouseLeave={() => setHover3(false)}
+                      >
+                        <Link
+                          to={`/accounting/${ifFee}/totalpaid`}
+                          className="text-light"
+                        >
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2">Total Paid</h6>
@@ -56,8 +95,17 @@ const FeeManagement = () => {
                       </div>
                     </div>
                     <div className="col">
-                      <div className="card border-3 border-secondary">
-                        <Link to="/accounting/fees/totaldue" className="text-dark">
+                      <div
+                        className={`card mb-3 text-bg-light border-3 border-dark ${
+                          hover4 ? " shadow" : ""
+                        }`}
+                        onMouseEnter={() => setHover4(true)}
+                        onMouseLeave={() => setHover4(false)}
+                      >
+                        <Link
+                          to={`/accounting/${ifFee}/totaldue`}
+                          className="text-dark"
+                        >
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2 text-body-secondary">
@@ -67,62 +115,23 @@ const FeeManagement = () => {
                         </Link>
                       </div>
                     </div>
-                    </div>
-                    <p className=" text-primary">
-                      * click on any box to view details.
-                    </p>
+                  </div>
+                  <p className=" text-primary">
+                    * click on any box to view details.
+                  </p>
                 </div>
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 py-4">
-                  <div className="col">
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="floatingInput"
-                        placeholder="username"
-                        required
-                      />
-                      <label>Admission No. or Username</label>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-floating mb-3">
-                      <select className="form-select">
-                        <option selected>..</option>
-                        <option value="1">Nursery class</option>
-                        <option value="1">LKG class</option>
-                        <option value="1">UKG class</option>
-                        <option value="1">1st class</option>
-                        <option value="1">2nd class</option>
-                        <option value="1">3rd class</option>
-                        <option value="1">4th class</option>
-                        <option value="1">5th class</option>
-                        <option value="1">6th class</option>
-                        <option value="1">7th class</option>
-                        <option value="1">8th class</option>
-                        <option value="1">9th class</option>
-                        <option value="1">10th class</option>
-                      </select>
-                      <label>Choose class</label>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-floating mb-3">
-                      <select className="form-select">
-                        <option selected>..</option>
-                        <option value="1">A</option>
-                        <option value="1">B</option>
-                        <option value="1">C</option>
-                        <option value="1">D</option>
-                      </select>
-                      <label>Choose section</label>
-                    </div>
-                  </div>
-                </div>
-                <div className="my-4">
-                  <h2 className="text-capitalize text-primary">
+                <SearchInputs
+                  assignValues={handleChange}
+                  paramsGroup={ifFee}
+                />
+                <p>{valueOne}</p>
+                <p>{valuetwo}</p>
+                <p>{valueThree}</p>
+
+                <div className="my-4  text-center">
+                  <h3 className="text-capitalize text-primary">
                     showing results for Fee's
-                  </h2>
+                  </h3>
                   <hr />
                 </div>
 
@@ -130,30 +139,21 @@ const FeeManagement = () => {
                   <div className="col mb-4">
                     <div className="d-flex justify-content-between">
                       <div className="">
-                        <Link className="btn btn-sm btn-success" to="/add/fee">
+                        <Link className="btn btn-primary" to="/add/fee">
                           <span className="bi bi-plus-circle me-2"></span>
-                          Create new Fee
+                          Create
                         </Link>
                       </div>
                       <div className="">
                         <div className="btn-toolbar mb-2 mb-md-0">
                           <div className="btn-group me-2">
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-outline-success"
-                            >
+                            <button type="button" className="btn btn-primary">
                               Share
                             </button>
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-outline-success"
-                            >
+                            <button type="button" className="btn btn-primary">
                               Import
                             </button>
-                            <button
-                              type="button"
-                              className="btn btn-sm btn-outline-success"
-                            >
+                            <button type="button" className="btn btn-primary">
                               Export
                             </button>
                           </div>
@@ -163,7 +163,7 @@ const FeeManagement = () => {
                   </div>
                   <div className="col">
                     <div className="table-responsive shadow small">
-                      <table className="table  table-striped">
+                      <table className="table  table-striped ">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -300,4 +300,4 @@ const FeeManagement = () => {
   );
 };
 
-export default FeeManagement;
+export default AccountingOutlet;

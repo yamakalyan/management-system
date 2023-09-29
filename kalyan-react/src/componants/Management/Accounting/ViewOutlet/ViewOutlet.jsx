@@ -1,56 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import SearchInputs from "../../../SearchInputs/SearchInputs";
 
-const ViewAccounting = () => {
+const ViewOutlet = () => {
   const params = useParams();
-  const [optionValues, setOptionsValues] = useState([]);
 
-  const optionsFee = [
-    "..",
-    "Nursery",
-    "UKG",
-    "LKG",
-    "1st class",
-    "2nd class",
-    "3rd class",
-    "4th class",
-    "5th class",
-    "6th class",
-    "7th class",
-    "8th class",
-    "9th class",
-    "10th class",
-  ];
-  const optionsSalaries = [
-    "..",
-    "Telugu",
-    "English",
-    "Maths",
-    "Science",
-    "chemistry",
-    "Social",
-  ];
-
-  const ifvalue =
-    params.group === "fees"
-      ? optionsFee
-      : params.group === "salaries"
-      ? optionsSalaries
-      : [];
-
-  useEffect(() => {
-    setOptionsValues(ifvalue);
-  }, []);
-
-  const mappingOptions = optionValues?.map((option, id) => {
-    return (
-      <>
-        <option value={option.toLowerCase()} key={id}>
-          {option}
-        </option>
-      </>
-    );
-  });
+  const [valueOne, setValueOne] = useState("");
+  const [valuetwo, setValueTwo] = useState("");
+  const [valueThree, setValueThree] = useState("");
+  
+  const handleChange = (firstValue, secondValue, thirdValue) => {
+    setValueOne(firstValue);
+    setValueTwo(secondValue);
+    setValueThree(thirdValue);
+  };
 
   return (
     <div>
@@ -60,57 +23,7 @@ const ViewAccounting = () => {
             {params.group} {params.name}
           </h2>
         </div>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 py-4">
-          <div className="col">
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                id="floatingInput"
-                placeholder="username"
-                required
-              />
-              <label>{params.group === "fees" ? "Admission No. or Username" : "Mobile number or Username"}</label>
-            </div>
-          </div>
-          {mappingOptions.length !== 0 && (
-            <>
-              <div className="col">
-                <div className="form-floating mb-3">
-                  <select className="form-select">{mappingOptions}</select>
-                  <label>Choose </label>
-                </div>
-              </div>
-            </>
-          )}
-          {params.group === "expanses" && (
-            <>
-              <div className="col">
-                <div className="form-floating mb-3">
-                 <input type="date"  className="form-control"/>
-                  <label>Choose date</label>
-                </div>
-              </div>
-            </>
-          )}
-
-          {params.group === "fees" && (
-            <>
-              <div className="col">
-                <div className="form-floating mb-3">
-                  <select className="form-select">
-                    <option selected>..</option>
-                    <option value="1">A</option>
-                    <option value="1">B</option>
-                    <option value="1">C</option>
-                    <option value="1">D</option>
-                  </select>
-                  <label>Choose </label>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
+        <SearchInputs assignValues={handleChange} paramsGroup={params.group}/>
         <div className="row py-5 ">
           <div className="col">
             <div className="table-responsive small">
@@ -130,7 +43,9 @@ const ViewAccounting = () => {
                     <td>random</td>
                     <td>data</td>
                     <td>placeholder</td>
-                    <td>text</td>
+                    <td>
+                      <Link to='/accounting/group/name/id'>link</Link>
+                    </td>
                   </tr>
                   <tr>
                     <td>1,001</td>
@@ -310,4 +225,4 @@ const ViewAccounting = () => {
   );
 };
 
-export default ViewAccounting;
+export default ViewOutlet;

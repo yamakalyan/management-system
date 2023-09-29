@@ -30,19 +30,18 @@ import ScholarShip from "./componants/Admissions/ScholarShip/ScholarShip";
 import { Events } from "./componants/NewsAndEvents/Events/Events";
 import Notifications from "./componants/Management/Add/AddRoutes/Notifications";
 import Notification from "./componants/NewsAndEvents/Notifications/Notifications";
-import ViewAccounting from "./componants/Management/Accounting/ViewAccounting/ViewAccounting";
 import Sports from "./componants/Management/Add/AddRoutes/Sports";
 import Labrotory from "./componants/Management/Add/AddRoutes/Labrotory";
 import Library from "./componants/Management/Add/AddRoutes/Library";
-import Salaries from "./componants/Management/Accounting/Outlets/Salaries";
-import ShowExpanses from "./componants/Management/Accounting/Outlets/ShowExpanses";
-import FeeManagement from "./componants/Management/Accounting/Outlets/FeeManagement";
 
 // NAV LINKS FOR CONDITIONAL ACTIVATING ROUTES
 import { conditionalRoutes } from "./componants/Navbar/NavRoutes/NavRoutes";
 import { useEffect } from "react";
 import FeemanagementAdd from "./componants/Management/Add/AddRoutes/FeemanagementAdd";
 import SalariesAdd from "./componants/Management/Add/AddRoutes/SalariesAdd";
+import ViewOutlet from "./componants/Management/Accounting/ViewOutlet/ViewOutlet";
+import AccountingOutlet from "./componants/Management/Accounting/Main/AccountingOutlet";
+import UniqueView from "./componants/Management/Accounting/UniqueView/UniqueView";
 
 function App() {
   AOS.init({
@@ -98,6 +97,9 @@ function App() {
         </Route>
         <Route path="/contact" element={<Contact />} />
 
+        
+
+
         {/* Profile */}
         <Route path="/profile/:name" element={<Profile />} />
 
@@ -108,11 +110,13 @@ function App() {
         <Route path="/accounting" element={<Accounting />}>
           <Route
             path="/accounting/:group/:name"
-            element={<ViewAccounting />}
+            element={<ViewOutlet />}
           />
-          <Route path="/accounting/salaries" element={<Salaries />} />
-          <Route path="/accounting/expanses" element={<ShowExpanses />} />
-          <Route path="/accounting/feemanagement" element={<FeeManagement />} />
+          <Route
+            path="/accounting/:group/:name/:id"
+            element={<UniqueView />}
+          />
+          <Route path="/accounting/:name" element={<AccountingOutlet />} />
         </Route>
 
         {/* Attendance */}

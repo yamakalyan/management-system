@@ -38,7 +38,7 @@ export const Profile = () => {
                     <div className="col-md col-lg">
                       <div
                         className="p-5 text-center shadow rounded-3"
-                        style={{ background: "rgb(105 255 120 / 24%)" }}
+                        style={{ background: "rgb(167 239 174)" }}
                       >
                         <div className="text-success row">
                           <div className="col">

@@ -185,9 +185,6 @@ export const managementNavbarRoutes = () => {
           {
             word: "Students",
           },
-          {
-            word: "Others",
-          },
         ],
       },
     },
@@ -210,15 +207,15 @@ export const managementNavbarRoutes = () => {
           {
             word: "Notifications",
           },
-          {
-            word: "Laboratory",
-          },
-          {
-            word: "Library",
-          },
-          {
-            word: "Sports ",
-          },
+          // {
+          //   word: "Laboratory",
+          // },
+          // {
+          //   word: "Library",
+          // },
+          // {
+          //   word: "Sports ",
+          // },
         ],
       },
     },
