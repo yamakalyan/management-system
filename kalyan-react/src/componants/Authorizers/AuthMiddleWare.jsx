@@ -18,3 +18,23 @@ export const AuthStudentMiddleWare = ({ children }) => {
   const navigator = useNavigate();
   return auth.student ? children : navigator("/");
 };
+
+export const AuthManageStaff = ({ children }) => {
+  const auth = Auth();
+  const navigator = useNavigate();
+  return auth.staff || auth.management ? children : navigator("/");
+};
+
+export const AuthStaffStudent = ({ children }) => {
+  const auth = Auth();
+  const navigator = useNavigate();
+  return auth.staff || auth.student ? children : navigator("/");
+};
+
+export const AuthManageStaffStudent = ({ children }) => {
+  const auth = Auth();
+  const navigator = useNavigate();
+  return auth.management || auth.staff || auth.student
+    ? children
+    : navigator("/");
+};

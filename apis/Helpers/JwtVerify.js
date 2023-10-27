@@ -47,6 +47,7 @@ module.exports = (req, res, next) => {
     req.role = role
 
     next();
+    
   } catch (error) {
     res.status(500).json({
       success: false,

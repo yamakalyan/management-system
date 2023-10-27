@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export let conditionalRoutes = [];
 
@@ -28,18 +28,6 @@ export const homeNavbarRoutes = () => {
 
     {
       name: { heading: "Faculty", icon: "bi bi-microsoft-teams" },
-      // name: {
-      //   heading: "Faculty",
-      //   icon: "bi bi-microsoft-teams",
-      //   sub_names: [
-      //     {
-      //       word: "Faculty Members",
-      //     },
-      //     {
-      //       word: "Departments",
-      //     },
-      //   ],
-      // },
     },
 
     {
@@ -170,11 +158,8 @@ export const managementNavbarRoutes = () => {
           // },
         ],
       },
+      icon : "bi bi-book"
     },
-    // {
-    //   name: "Fee-management",
-    //   icon: "bi bi-wrench-adjustable-circle",
-    // },
     {
       name: {
         heading: "Attendance",
@@ -187,11 +172,18 @@ export const managementNavbarRoutes = () => {
           },
         ],
       },
+      icon: "bi bi-calendar-check",
     },
     {
       name: {
         heading: "Add",
         sub_names: [
+          {
+            word: "Student",
+          },
+          {
+            word: "Staff",
+          },
           {
             word: "Salaries",
           },
@@ -218,6 +210,7 @@ export const managementNavbarRoutes = () => {
           // },
         ],
       },
+      icon : "bi bi-plus-square"
     },
     {
       name: {
@@ -231,6 +224,7 @@ export const managementNavbarRoutes = () => {
           },
         ],
       },
+      icon: "bi bi-card-list",
     },
     // {
     //   name: {
@@ -252,12 +246,16 @@ export const managementNavbarRoutes = () => {
     //   },
     // },
     {
+      name: "Search",
+      icon: "bi bi-search",
+    },
+    {
       name: "Dashboard",
-      icon: "bi bi-tag-fill",
+      icon: "bi bi-command",
     },
     {
       name: "Profile",
-      icon: "bi bi-person-lines-fill",
+      icon: "bi bi-person-circle",
     },
     {
       name: "Log-out",
@@ -265,6 +263,8 @@ export const managementNavbarRoutes = () => {
     },
   ];
   const mapping = routes.map((route, id) => {
+    const navigator = useNavigate();
+
     return (
       <>
         {route.name.sub_names ? (
@@ -276,7 +276,7 @@ export const managementNavbarRoutes = () => {
                 role="button"
                 data-bs-toggle="dropdown"
               >
-                <i className="bi bi-people-fill me-2"></i>
+                <i className={`${route.icon} me-2`}></i>
                 <span> {route.name.heading}</span>
               </a>
               <ul className="dropdown-menu">
@@ -309,13 +309,13 @@ export const managementNavbarRoutes = () => {
                 route.name === "Profile"
                   ? `/profile/management`
                   : route.name === "Dashboard"
-                  ? `/dashboard/management`
+                  ? `/dashboard/feemanagement`
                   : `/${route.name.toLowerCase()}`
               }
               onClick={() => {
                 route.condition
                   ? (localStorage.removeItem("authToken"),
-                    window.location.href("/"),
+                    navigator("/"),
                     window.location.reload(false))
                   : null;
               }}
@@ -336,24 +336,54 @@ export const managementNavbarRoutes = () => {
 export const staffNavbarRoutes = () => {
   const routes = [
     {
-      name: "Home",
-      icon: "bi bi-person-bounding-box",
+      name: "Search",
+      icon: "bi bi-search",
     },
     {
-      name: "Student",
-      icon: "bi bi-wrench-adjustable-circle",
+      name: {
+        heading: "Attendance",
+        sub_names: [
+          {
+            word: "Students",
+          },
+        ],
+      },
+      icon : "bi bi-calendar-check"
     },
     {
-      name: "Analysits",
-      icon: "bi bi-sliders",
+      name: {
+        heading: "Add",
+        sub_names: [
+          {
+            word: "Student",
+          },
+          {
+            word: "Halltickets",
+          },
+          {
+            word: "Reportcards",
+          },
+        ],
+      },
+      icon : "bi bi-plus-square"
     },
     {
-      name: "Dashboard",
-      icon: "bi bi-tag-fill",
+      name: {
+        heading: "Cards",
+        sub_names: [
+          {
+            word: "Report Cards",
+          },
+          {
+            word: "Hall Tickets",
+          },
+        ],
+      },
+      icon: "bi bi-card-list",
     },
     {
       name: "Profile",
-      icon: "bi bi-person-lines-fill",
+      icon: "bi bi-person-circle",
     },
     {
       name: "Log-out",
@@ -361,34 +391,67 @@ export const staffNavbarRoutes = () => {
     },
   ];
   const mapping = routes.map((route, id) => {
+    const navigator = useNavigate();
     return (
       <>
-        <li className="nav-item" key={id}>
-          <Link
-            className={
-              route.name === "Log-out" ? "btn btn-outline-light" : "nav-link"
-            }
-            to={
-              route.name === "Profile"
-                ? `/profile/staff`
-                : route.name === "Dashboard"
-                ? `/dashboard/staff`
-                : `/${route.name.toLowerCase()}`
-            }
-            onClick={() => {
-              route.condition
-                ? (localStorage.removeItem("authToken"),
-                  window.location.href("/"),
-                  window.location.reload(false))
-                : null;
-            }}
-          >
-            {route.name !== "Log-out" && (
-              <i className={route.icon + " " + "me-2"}></i>
-            )}
-            <span>{route.name}</span>
-          </Link>
-        </li>
+        {route.name.sub_names ? (
+          <>
+            <li className="nav-item dropdown" key={id}>
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i className={`${route.icon} me-2`}></i>
+                <span> {route.name.heading}</span>
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  {route.name.sub_names.map((data) => {
+                    return (
+                      <>
+                        <Link
+                          className="dropdown-item"
+                          to={`/${route.name.heading.toLowerCase()}/${data.word
+                            .toLowerCase()
+                            .replace(/\s/g, "")}`}
+                        >
+                          {data.word}
+                        </Link>
+                      </>
+                    );
+                  })}
+                </li>
+              </ul>
+            </li>
+          </>
+        ) : (
+          <li className="nav-item" key={id}>
+            <Link
+              className={
+                route.name === "Log-out" ? "btn btn-outline-light" : "nav-link"
+              }
+              to={
+                route.name === "Profile"
+                  ? `/search/staff/1234`
+                  : `/${route.name.toLowerCase()}`
+              }
+              onClick={() => {
+                route.condition
+                  ? (localStorage.removeItem("authToken"),
+                    navigator("/"),
+                    window.location.reload(false))
+                  : null;
+              }}
+            >
+              {route.name !== "Log-out" && (
+                <i className={route.icon + " " + "me-2"}></i>
+              )}
+              <span>{route.name}</span>
+            </Link>
+          </li>
+        )}
       </>
     );
   });
@@ -396,30 +459,39 @@ export const staffNavbarRoutes = () => {
 };
 
 export const studentNavbarRoutes = () => {
+  const studentId = localStorage.getItem("authToken");
+
   const routes = [
     {
-      name: "Home",
-      icon: "bi bi-person-bounding-box",
+      name: {
+        heading: "Cards",
+
+        sub_names: [
+          {
+            word: "Report Cards",
+          },
+          {
+            word: "Hall Tickets",
+          },
+        ],
+      },
+      icon: "bi bi-card-list",
     },
+    // {
+    //   name: "Results",
+    //   icon: "bi bi-sliders",
+    // },
     {
-      name: "Books",
-      icon: "bi bi-sliders",
+      name: "Attendance",
+      icon: "bi bi-calendar-check",
     },
-    {
-      name: "Results",
-      icon: "bi bi-sliders",
-    },
-    {
-      name: "Tasks",
-      icon: "bi bi-sliders",
-    },
-    {
-      name: "Dashboard",
-      icon: "bi bi-tag-fill",
-    },
+    // {
+    //   name: "Reports",
+    //   icon: "bi bi-sliders",
+    // },
     {
       name: "Profile",
-      icon: "bi bi-person-lines-fill",
+      icon: "bi bi-person-circle",
     },
     {
       name: "Log-out",
@@ -429,34 +501,66 @@ export const studentNavbarRoutes = () => {
   const mapping = routes.map((route, id) => {
     return (
       <>
-        <li className="nav-item" key={id}>
-          <Link
-            className={
-              route.name === "Log-out" ? "btn btn-outline-light" : "nav-link"
-            }
-            to={
-              route.name === "Profile"
-                ? `/profile/student`
-                : route.name === "Dashboard"
-                ? `/dashboard/student`
-                : route.condition
-                ? ""
-                : `/${route.name.toLowerCase()}`
-            }
-            onClick={() => {
-              route.condition
-                ? (localStorage.removeItem("authToken"),
-                  window.location.href("/"),
-                  window.location.reload(false))
-                : null;
-            }}
-          >
-            {route.name !== "Log-out" && (
-              <i className={route.icon + " " + "me-2"}></i>
-            )}
-            <span>{route.name}</span>
-          </Link>
-        </li>
+        {route.name.sub_names ? (
+          <>
+            <li className="nav-item dropdown" key={id}>
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i className={`${route.icon} me-2`}></i>
+                <span> {route.name.heading}</span>
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  {route.name.sub_names.map((data) => {
+                    return (
+                      <>
+                        <Link
+                          className="dropdown-item"
+                          to={`/${route.name.heading.toLowerCase()}/${data.word
+                            .toLowerCase()
+                            .replace(/\s/g, "")}`}
+                        >
+                          {data.word}
+                        </Link>
+                      </>
+                    );
+                  })}
+                </li>
+              </ul>
+            </li>
+          </>
+        ) : (
+          <li className="nav-item" key={id}>
+            <Link
+              className={
+                route.name === "Log-out" ? "btn btn-outline-light" : "nav-link"
+              }
+              to={
+                route.name === "Profile"
+                  ? `/search/student/${studentId}`
+                  : route.name === "Attendance"
+                  ? `/${route.name.toLowerCase()}/student/show`
+                  : `/${route.name.toLowerCase().replace(/\s/g, "")}`
+              }
+              onClick={() => {
+                route.condition
+                  ? (localStorage.removeItem("authToken"),
+                    navigator("/"),
+                    window.location.reload(false))
+                  : null;
+              }}
+            >
+              {route.name !== "Log-out" && (
+                <i className={route.icon + " " + "me-2"}></i>
+              )}
+              <span>{route.name}</span>
+            </Link>
+          </li>
+        )}
       </>
     );
   });

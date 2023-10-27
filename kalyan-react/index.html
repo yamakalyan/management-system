@@ -36,15 +36,15 @@
   </head>
   <body>
     <div id="root">
-      <div className="preloader">
-        <div id="pre-loader"></div>
+      <div id="preloader">
+        <span class="loader"></span>
       </div>
     </div>
-    <script type="module" src="/src/main.jsx"></script>
   </body>
+  <script type="module" src="/src/main.jsx"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const preloader = document.querySelector(".preloader");
+      const preloader = document.querySelector(".loader");
       if (preloader) {
         window.addEventListener("load", () => {
           preloader.remove();

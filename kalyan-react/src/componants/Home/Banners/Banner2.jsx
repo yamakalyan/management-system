@@ -2,8 +2,8 @@ const Banner2 = () => {
   return (
     <div>
       <div className="Banner2">
-        <div className="container-fluid">
-          <div className=" bg-body-tertiary">
+        <div className="container-fluid ">
+          <div className=" bg-body-secondary">
             <div className="">
               <div className="my-5" data-aos="zoom-in">
                 <div className="py-5 text-center">

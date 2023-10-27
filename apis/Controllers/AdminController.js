@@ -1,13 +1,9 @@
 const express = require("express");
 const admin = express.Router();
-const database = require("../Config/database");
-const table = require("../Helpers/Tables");
 const jwtVerify = require("../Helpers/JwtVerify");
-const googleSheetInsert = require("../Helpers/googleSheets/PostGoogleSheet")
 
 const {
   getUnique,
-  getList,
   getProfile
 } = require("../Controllers/GetMethods/GetMethod")
 const {
@@ -25,16 +21,6 @@ admin.get("/by/:id", jwtVerify, getUnique, async (req, res, next) => {
   }
 });
 
-// LIST
-admin.get("/list", jwtVerify, getList, async (req, res, next) => {
-  try {
-    return res.json(req.getListResults)
-
-  } catch (error) {
-    next(error)
-  }
-});
-
 // PROFILE
 admin.get("/profile", jwtVerify, getProfile, (req, res, next) => {
   try {
@@ -45,7 +31,7 @@ admin.get("/profile", jwtVerify, getProfile, (req, res, next) => {
 });
 
 // CREATE
-admin.post("/create", postCreate, async (req, res, next) => {
+admin.post("/create/:type", postCreate, async (req, res, next) => {
   try {
     await res.status(200).json(req.createResponse)
   } catch (error) {

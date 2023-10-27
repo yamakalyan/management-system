@@ -7,7 +7,7 @@ const Notifications = () => {
     <div>
       <div className="container py-3" data-aos="zoom-in">
         <div>
-          <h1 className="text-success font-monospace h2 text-center">Create {trimAdd}</h1>
+          <h1 className="text-success font-monospace h2 text-center">Create {trimAdd} </h1>
           <hr />
         </div>
         <div className="row py-3">

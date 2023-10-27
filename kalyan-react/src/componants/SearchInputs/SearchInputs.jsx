@@ -4,7 +4,6 @@ const SearchInputs = ({ assignValues, paramsGroup }) => {
   const [valueOne, setValueOne] = useState("");
   const [valuetwo, setValueTwo] = useState("");
   const [valueThree, setValueThree] = useState("");
-
   const [optionValues, setOptionsValues] = useState([]);
 
   const optionsFee = [
@@ -33,12 +32,20 @@ const SearchInputs = ({ assignValues, paramsGroup }) => {
     "Social",
   ];
 
-  const ifvalue =
-    paramsGroup === "fees"
-      ? optionsFee
-      : paramsGroup === "salaries"
-      ? optionsSalaries
-      : [];
+  let ifvalue;
+
+  switch (paramsGroup) {
+    case "fees":
+    case "students":
+      ifvalue = optionsFee;
+      break;
+    case "salaries":
+    case "staff":
+      ifvalue = optionsSalaries;
+      break;
+    default:
+      break;
+  }
 
   useEffect(() => {
     assignValues(valueOne, valuetwo, valueThree);
@@ -61,22 +68,24 @@ const SearchInputs = ({ assignValues, paramsGroup }) => {
         {paramsGroup !== "expanses" && (
           <>
             <div className="col">
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-3 z-0">
                 <select
                   className="form-select"
                   onChange={(e) => setValueOne(e.target.value)}
                 >
                   {mappingOptions}
                 </select>
-                <label>{paramsGroup === "fees" ? "Choose class" : "Choose subject"}</label>
+                <label>
+                  {paramsGroup === "fees" || paramsGroup === "students" ? "Choose class" : "Choose subject"}
+                </label>
               </div>
             </div>
           </>
         )}
-        {paramsGroup === "fees" && (
+        {paramsGroup === "fees" || paramsGroup === "students" && (
           <>
             <div className="col">
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-3 z-0">
                 <select
                   className="form-select"
                   onChange={(e) => setValueTwo(e.target.value)}
@@ -95,7 +104,7 @@ const SearchInputs = ({ assignValues, paramsGroup }) => {
         {paramsGroup === "expanses" && (
           <>
             <div className="col">
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-3 z-0">
                 <input type="date" className="form-control" />
                 <label>Choose date</label>
               </div>
@@ -103,7 +112,7 @@ const SearchInputs = ({ assignValues, paramsGroup }) => {
           </>
         )}
         <div className="col">
-          <div className="form-floating mb-3">
+          <div className="form-floating mb-3 z-0">
             <input
               type="text"
               className="form-control"

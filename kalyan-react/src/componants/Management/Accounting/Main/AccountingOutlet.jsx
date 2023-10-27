@@ -13,7 +13,7 @@ const AccountingOutlet = () => {
   const [valueOne, setValueOne] = useState("");
   const [valuetwo, setValueTwo] = useState("");
   const [valueThree, setValueThree] = useState("");
-  
+
   const handleChange = (firstValue, secondValue, thirdValue) => {
     setValueOne(firstValue);
     setValueTwo(secondValue);
@@ -21,7 +21,7 @@ const AccountingOutlet = () => {
   };
 
   const params = useParams();
-  const ifFee = params.name == "feemanagement" ? "fees" : params.name
+  const ifFee = params.name == "feemanagement" ? "fees" : params.name;
 
   return (
     <div>
@@ -47,7 +47,10 @@ const AccountingOutlet = () => {
                         onMouseEnter={() => setHover1(true)}
                         onMouseLeave={() => setHover1(false)}
                       >
-                        <Link to={`/accounting/${ifFee}/paid`} className="text-light">
+                        <Link
+                          to={`/accounting/${ifFee}/paid`}
+                          className="text-light"
+                        >
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2 ">
@@ -65,7 +68,10 @@ const AccountingOutlet = () => {
                         onMouseEnter={() => setHover2(true)}
                         onMouseLeave={() => setHover2(false)}
                       >
-                        <Link to={`/accounting/${ifFee}/due`} className="text-light">
+                        <Link
+                          to={`/accounting/${ifFee}/due`}
+                          className="text-light"
+                        >
                           <div className="card-body py-4">
                             <h5 className="card-title">3120</h5>
                             <h6 className="card-subtitle mb-2">
@@ -120,13 +126,7 @@ const AccountingOutlet = () => {
                     * click on any box to view details.
                   </p>
                 </div>
-                <SearchInputs
-                  assignValues={handleChange}
-                  paramsGroup={ifFee}
-                />
-                <p>{valueOne}</p>
-                <p>{valuetwo}</p>
-                <p>{valueThree}</p>
+                <SearchInputs assignValues={handleChange} paramsGroup={ifFee} />
 
                 <div className="my-4  text-center">
                   <h3 className="text-capitalize text-primary">

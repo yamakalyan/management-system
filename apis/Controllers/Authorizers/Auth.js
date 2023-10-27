@@ -4,7 +4,7 @@ const database = require("../../Config/database");
 const table = require("../../Helpers/Tables");
 const jwtVerify = require("../../Helpers/JwtVerify");
 const jwt = require("jsonwebtoken")
-
+const bcrypt = require("bcrypt")
 
 // AUTHENTICATION 
 Auth.get("/authenticate", jwtVerify, (req, res, next) => {
@@ -69,7 +69,7 @@ Auth.get("/authenticate", jwtVerify, (req, res, next) => {
 })
 
 // LOGIN BASED ON ROLE
-Auth.post("/login", (req, res, next) => {
+Auth.post("/login", async (req, res, next) => {
     try {
         let role = req.body.role
         let tableName = ""
@@ -89,7 +89,7 @@ Auth.post("/login", (req, res, next) => {
         }
 
         const checkSql = `SELECT * FROM ${tableName} WHERE email='${req.body.username}' OR mobile='${req.body.username}' AND ifdeleted='0'`
-        database.query(checkSql, (err, results) => {
+        database.query(checkSql, async (err, results) => {
             if (err) {
                 res.status(400).json({
                     success: false,
@@ -103,7 +103,8 @@ Auth.post("/login", (req, res, next) => {
                         message: "notFound",
                     })
                 } else {
-                    if (results[0].password == req.body.password) {
+                    const checkIFpasswordTrue = await bcrypt.compare(req.body.password, results[0].password)
+                    if (checkIFpasswordTrue) {
 
                         const id = role == "management" ? results[0].management_id :
                             role == "staff" ? results[0].staff_id :
@@ -122,7 +123,8 @@ Auth.post("/login", (req, res, next) => {
                         res.status(200).json({
                             success: true,
                             message: "successLogin",
-                            token
+                            token,
+                            role
                         })
                     } else {
                         res.status(400).json({

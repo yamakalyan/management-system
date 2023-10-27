@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getProfileMethod } from "../Helpers/Methods";
 import { Loader1 } from "../Loaders/Loader1";
 
@@ -14,7 +14,7 @@ export const Profile = () => {
       try {
         const url = `${params.name}/profile`;
         const results = await getProfileMethod(url);
-        setLoader(false)
+        setLoader(false);
         setProfile(results);
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -41,32 +41,20 @@ export const Profile = () => {
                         style={{ background: "rgb(167 239 174)" }}
                       >
                         <div className="text-success row">
-                          <div className="col">
-                            <h2 className="fw-light text-center">
-                              PROFILE DETAILS
-                            </h2>
-                          </div>
-                          <div className="col">
-                            <span className="h4">
-                              <Link
-                                to="/salesrecruiter/update"
-                                className="mx-3"
-                              ></Link>
-                              <Link to="/salesrecruiter/delete"></Link>
-                            </span>
+                          <div className="d-flex justify-content-around">
+                            <div>
+                              <h3 className="text-primary fw-normal">
+                                Management Profile Details
+                              </h3>
+                            </div>
+                            <div className="my-auto">
+                              <i className="bi bi-pencil-square h4 mx-2 text-primary"></i>
+                              <i className="bi bi-trash mx-2 h4 text-danger"></i>
+                            </div>
                           </div>
                         </div>
                         <hr />
                         <div className="row py-5">
-                          <div className="col-md col-lg">
-                            <h1 className="display-3"></h1>
-                            <br />
-                            <br />
-                            <h5 className="text-muted">
-                              {params.name}
-                            </h5>
-                          </div>
-
                           <div className="col-md col-lg text-start">
                             <p className="text-muted lead">
                               Name : {profile[0]?.name}

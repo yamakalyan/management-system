@@ -1,13 +1,9 @@
 const express = require("express");
 const staff = express.Router();
-const database = require("../Config/database");
-const table = require("../Helpers/Tables");
 const jwtVerify = require("../Helpers/JwtVerify");
-const googleSheetInsert = require("../Helpers/googleSheets/PostGoogleSheet")
 
 const {
     getUnique,
-    getList,
     getProfile
 } = require("../Controllers/GetMethods/GetMethod")
 const {
@@ -22,16 +18,6 @@ staff.get("/by/:id", jwtVerify, getUnique, async (req, res, next) => {
 
     } catch (error) {
         next(error);
-    }
-});
-
-// LIST
-staff.get("/list", jwtVerify, getList, async (req, res, next) => {
-    try {
-        return res.json(req.getListResults)
-
-    } catch (error) {
-        next(error)
     }
 });
 

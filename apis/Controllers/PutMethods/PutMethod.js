@@ -1,8 +1,13 @@
 const database = require("../../Config/database")
 
-const putCreate = async (req, res, next) => {
+
+// POST METHOD TO CREATE / MANAGEMENT / STAFF / STUDENT BASED ON ROLE
+const putUpdate = async (req, res, next) => {
+
     const values = req.body.values
-    const tableName = req.body.role
+    const tableName = req.params.type
+    const ID = req.params.id
+
 
     // SANITIZING INPUT VALUES
     const allowedCharecterForName = /^[A-Z/a-z]+$/
@@ -25,89 +30,157 @@ const putCreate = async (req, res, next) => {
     const Password = values.map((pass) => pass.password)
     Password.password = "123321"
 
-    // ADDING ID TO FIRST PLACE IN ARRAY VALUES
-    const takingFirstLetter = tableName.substring(0, 3).toUpperCase()
-    const insertionId = takingFirstLetter + Math.floor(100000 * Math.random() + 999999)
-    values.unshift(insertionId)
-
-    // ADDING STATUS AND IFDELETED TO LAST PLACE IN ARRAY VALUES
-    const lastValuesForArray = {
-        status: 0,
-        ifdeleted: 0
-    }
-    values.push(lastValuesForArray)
-
     // COMBINIG THE OBJECTS USING LOOP AND OBJECT METHOD
-    const combinigToObject = {}
+    // const combinigToObject = {}
+    // for (let i = 0; i < values.length; i++) {
+    // CHECHING IF ITS OBJECT OR NOT
+    //     if (typeof values[i] === "object") {
+    // IF TRUE IT MIXES OBJECT WITH OBJECT KEY AND VALUE
+    //         Object.assign(combinigToObject, values[i])
+    //     } else {
+    // IF FALSE IT MIXES AND TAKES combingToObject.key as KEY AND VALUE EX = KEY : VALUE
+    //         const add = [tableName + '_id'].toLocaleString().toLowerCase()
+    //         combinigToObject[add] = values[i]
+    //     }
+    // }
 
-    for (let i = 0; i < values.length; i++) {
-        // CHECHING IF ITS OBJECT OR NOT
-        if (typeof values[i] === "object") {
-            // IF TRUE IT MIXES OBJECT WITH OBJECT KEY AND VALUE
-            Object.assign(combinigToObject, values[i])
-        } else {
-            // IF FALSE IT MIXES AND TAKES combingToObject.key as KEY AND VALUE EX = KEY : VALUE
-            const add = [tableName + '_id'].toLocaleString().toLowerCase()
-            combinigToObject[add] = values[i]
-        }
-    }
 
-    const checkEmailSql = `SELECT * FROM ${tableName} WHERE ? AND ifdeleted='0'`
-    database.query(checkEmailSql, {
-        email
-    }, (err, emailCheckResults) => {
-        if (err) {
-            return res.status(400).json({
-                success: false,
-                message: "HavingIssues",
-                err
-            })
-        } else {
-            if (emailCheckResults.length == 0) {
-                const checkMobileSql = `SELECT * FROM ${tableName} WHERE ? AND ifdeleted='0' `
-                database.query(checkMobileSql, {
-                    mobile
-                }, (err, mobileCheckResults) => {
-                    if (err) {
-                        return res.status(400).json({
-                            success: false,
-                            message: "HavingIssues",
-                            err
-                        })
-                    } else {
-                        if (mobileCheckResults.length == 0) {
-                            const createSql = `UPDATE ${tableName} SET ? WHERE ?`
+    const firstTwoLettersFromTableName = tableName.substring(0, 3).toUpperCase()
+    const tableWithId = tableName + '_id'
+    const mixedValues = values.map(mix => ({
+        ...mix,
+        created_by: req.id,
+        [tableWithId]: firstTwoLettersFromTableName + Math.floor(1000000 + Math.random() * 9999999)
+    }))
 
-                            database.query(createSql, combinigToObject, (err, results) => {
-                                if (err) {
-                                    return res.status(400).json({
-                                        success: false,
-                                        message: "HavingIssues",
-                                        err
-                                    })
-                                } else {
-                                    return req.createResponse = res.status(200).json({
-                                        success: true,
-                                        message: `${name} SuccessfullyInserted into ${tableName}`,
-                                        results
-                                    })
-                                }
-                            })
-                        } else {
-                            return res.status(400).json({
-                                success: false,
-                                message: "MobileNumberAlreadyExists",
-                            })
-                        }
-                    }
-                })
-            } else {
+    const fullID = [{
+        key: tableWithId,
+        value: ID
+    }, {
+        key: "ifdeleted",
+        value: "0"
+    }]
+
+    const mappingWHEREkeys = fullID.map((key) =>
+        `${key.key} = ?`
+    ).join(" AND ")
+
+    const mappingWHEREvalues = fullID.map((value) =>
+        value.value
+    )
+    console.log(mappingWHEREkeys)
+    console.log(mappingWHEREvalues)
+
+    const checkIDSql = `SELECT * FROM ${tableName} WHERE ${mappingWHEREkeys}`
+    database.query(checkIDSql,
+        mappingWHEREvalues, (err, IDCheckResults) => {
+            if (err) {
                 return res.status(400).json({
                     success: false,
-                    message: "EmailAddressAlreadyExists",
+                    message: "HavingIssues",
+                    err
                 })
+            } else {
+                if (IDCheckResults.length == 0) {
+                    return res.status(400).json({
+                        success: false,
+                        message: "NoDataFound",
+                    })
+                } else {
+                    return res.status(400).json({
+                        success: true,
+                        message: "SUccess",
+                        IDCheckResults
+                    })
+                }
             }
-        }
-    })
+        })
 
+}
+
+// POST METHOD TO CREATE SIMILAR INSERTION CASES
+const similarUpdateCases = async (req, res, next) => {
+    try {
+        const tableName = req.params.case
+
+        // REMOVING LAST LETTER IF S INCLUDES AT LAST
+        const checkingIFSincludesAtLast = tableName[tableName.length - 1]
+
+        const removingLastLetter = (checkingIFSincludesAtLast).toLowerCase() == "s" ? tableName.slice(0, -1) : tableName
+
+        // TAKING 3 LETTERS FROM TABLENAME FOR ID
+        const firstTwoLettersFromTableName = tableName.substring(0, 3).toUpperCase()
+
+        const values = req.body.values
+        const tableWithId = removingLastLetter + '_id'
+
+        // const getColumnNames = `DESCRIBE ${tableName}`
+
+        // database.query(getColumnNames, (err, result) => {
+        //     if (err) {
+        //         console.log(err)
+        //     } else {
+        //         const test = result.map((item) => ({
+        //             column: item.Field
+        //         }))
+        //         result = test
+        //         console.log(result)
+        //     }
+        // })
+
+        const authCheck = middleWareForManagementStaff(req.role, tableName)
+
+        if (authCheck.success) {
+
+            const checkingLastTableID = `SELECT ${tableWithId} FROM ${tableName} ORDER BY id DESC LIMIT 1`
+            database.query(checkingLastTableID, (err, lastIdResults) => {
+                if (err) {
+                    res.status(400).json({
+                        success: false,
+                        message: "HavingInternalIssues",
+                        err
+                    })
+                } else {
+
+                    const resultID = lastIdResults[0] == undefined || null ? "0" : lastIdResults[0][tableWithId]
+                    const removingStringFromNumberID = resultID.match(/\d+/)
+                    const finalLastID = parseFloat(removingStringFromNumberID) + 1
+                    const ifTransactions = tableName == "transactions" ? "transaction_made_by" : "created_by"
+
+                    const mixedValues = values.map(mix => ({
+                        ...mix,
+                        [ifTransactions]: req.id,
+                        [tableWithId]: firstTwoLettersFromTableName + finalLastID
+                    }))
+                    const createSql = `INSERT INTO ${tableName} SET ?`
+                    database.query(createSql, mixedValues, (err, results) => {
+                        if (err) {
+                            res.status(400).json({
+                                success: false,
+                                message: "HavingIssues",
+                                err
+                            })
+                        } else {
+                            return res.results = res.status(200).json({
+                                success: true,
+                                message: `Data SuccessfullyInserted into ${tableName}`,
+                                results
+                            })
+                        }
+                    })
+                }
+            })
+
+        } else {
+            res.status(401).json(authCheck)
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {
+    putUpdate,
+    similarUpdateCases
 }
