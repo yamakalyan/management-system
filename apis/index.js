@@ -21,18 +21,13 @@ app.get("/api/", (req, res) => {
   const returnIs = {
     success: true,
     message: "Working properly.",
-    developed_by: "Do Tech Development Services",
+    developed_by: "Kalyanyama.",
     developers: [{
-        name: "Ganesh Bondla",
-        portfolio: "https://ganeshbondla.in",
-        github: "https://github.com/ganeshbondla",
-        designation: "UI and API Developer (Fullstack)",
-      },
       {
         name: "Kalyan Yama",
         portfolio: "https://yamakalyan3120.web.app/",
         github: "https://github.com/yamakalyan",
-        designation: "API Developer",
+        designation: "Full-stack Developer",
       },
     ],
   };
